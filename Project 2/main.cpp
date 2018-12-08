@@ -12,6 +12,7 @@
 #include <fstream>
 #include <iomanip>
 #include <string>
+#include <stdlib.h> //To exit
 using namespace std;
 
 //User Libraries Here
@@ -23,6 +24,8 @@ using namespace std;
 //Function Prototypes Here
 int dlrTotl( int d_card1, int d_card2 ); //Dealers total
 int plyTotl( int p_card1, int p_card2 ); //Players total
+void exit(int exitcod);                 //To exit. exitcod
+
 
 //Program Execution Begins Here
 int main (){   
@@ -141,9 +144,23 @@ srand((unsigned)time(0));
                                     cout << "\n" << "You Win $" << (int)wager << "!" << endl; //Player wins
                                     ttlWagr += wager;
                             }else{ 
-                                    cout << "\n" << "You lose." << endl;
+                                    cout << "\n" << "You lose." << endl; //Player loses
                                     ttlWagr -= wager;
-                                    //Player looses
+                                                                      
+                                    int exitcod; //Variable to exit
+                                    cout << 'Would you like to exit?\n';
+                                    cin >> exitcod;
+                                    
+                                    if ( exitcod )
+	                            {
+		                       cout << "Exiting using _Exit";
+		                       _Exit( exitcod );
+	                            }
+	                            else
+	                            {
+		                    cout << "Exiting using exit";
+		                    exit( exitcod );
+	                            }
                             } 
         }
     }
